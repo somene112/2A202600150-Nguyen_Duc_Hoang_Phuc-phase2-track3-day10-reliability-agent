@@ -1,0 +1,37 @@
+============================================================
+RedisCircuitBreaker -- shared state across instances demo
+============================================================
+
+[Setup] Reset key 'cb:demo-primary:state' in Redis
+
+--- Test 1: initial state is CLOSED on both instances ---
+Instance A state: closed
+Instance B state: closed
+PASS
+
+--- Test 2: Instance A records 3 failures -> circuit opens ---
+After failure 1 - Instance A state: closed
+After failure 2 - Instance A state: closed
+After failure 3 - Instance A state: open
+PASS: Instance A circuit is OPEN
+
+--- Test 3: Instance B sees shared OPEN state ---
+Instance B state (no local failures): open
+PASS: Instance B reads OPEN from Redis
+
+--- Test 4: Instance B rejects requests while circuit is OPEN ---
+Instance B allow_request() = False
+PASS: Instance B correctly rejects request (circuit is OPEN in Redis)
+
+--- Test 5: Instance A also rejects (same shared state) ---
+Instance A allow_request() = False
+PASS
+
+--- Redis state hash ---
+  failure_count: 0
+  success_count: 0
+  state: open
+  opened_at: 1778651181.35453
+
+[Teardown] Deleted key 'cb:demo-primary:state'
+============================================================

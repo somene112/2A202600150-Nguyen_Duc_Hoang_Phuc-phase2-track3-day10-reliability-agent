@@ -30,12 +30,15 @@ class CacheConfig(BaseModel):
 
 class LoadTestConfig(BaseModel):
     requests: int = Field(gt=0)
+    concurrency: int = Field(default=1, ge=1)
 
 
 class ScenarioConfig(BaseModel):
     name: str
     description: str = ""
     provider_overrides: dict[str, float] = Field(default_factory=dict)
+    disable_cache: bool = False
+    cost_budget_usd: float | None = None
 
 
 class LabConfig(BaseModel):

@@ -1,0 +1,2 @@
+{"scenario": "cache_stale_candidate", "query": "Summarize refund policy for the 2026 academic year.", "cached_key": "Summarize refund policy for the 2023 academic year.", "score": 0.6552136752136752, "reason": "4-digit number mismatch"}
+{"scenario": "cache_stale_candidate", "query": "What is the scholarship application deadline for 2026?", "cached_key": "What is the scholarship application deadline for 2024?", "score": 0.68, "reason": "4-digit number mismatch"}

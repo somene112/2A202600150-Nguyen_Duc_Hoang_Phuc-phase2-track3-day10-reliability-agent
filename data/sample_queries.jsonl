@@ -3,3 +3,8 @@
 {"id":"q3","query":"Explain circuit breaker states in one paragraph.","expected_risk":"technical"}
 {"id":"q4","query":"Give me the current account balance for user 123.","expected_risk":"privacy"}
 {"id":"q5","query":"Summarize the admission FAQ in 5 bullets.","expected_risk":"faq"}
+{"id":"q6","query":"Summarize refund policy for the 2023 academic year.","expected_risk":"policy"}
+{"id":"q7","query":"What are the admission requirements for 2024?","expected_risk":"policy"}
+{"id":"q8","query":"Explain the fee structure changes in 2025.","expected_risk":"policy"}
+{"id":"q9","query":"Show me the course catalog for the 2026 semester.","expected_risk":"policy"}
+{"id":"q10","query":"What is the scholarship application deadline for 2024?","expected_risk":"policy"}

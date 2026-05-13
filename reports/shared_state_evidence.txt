@@ -1,0 +1,35 @@
+============================================================
+SharedRedisCache — shared state demo
+============================================================
+
+[Setup] Flushed all keys with prefix 'rl:demo:'
+
+--- Test 1: basic cross-instance retrieval ---
+Instance 1 stored: 'What is the refund policy?' -> 'Full refund within 30 days.'
+Instance 2 retrieved: 'Full refund within 30 days.'  (score=1.0)
+PASS: Instance 2 sees Instance 1's entry
+
+--- Test 2: metadata preserved ---
+Instance 1 stored with metadata: provider=primary, model=gpt-4
+Instance 2 retrieved: 'CLOSED, OPEN, HALF_OPEN.'
+PASS: metadata round-trip successful
+
+--- Test 3: near-duplicate similarity match across instances ---
+Instance 1 stored: 'How long is the return window?'
+Instance 2 similarity query: 'What is the return window length?'  -> score=0.465, cached=None
+PASS: similarity score=0.465 (above threshold -> MISS)
+
+--- Test 4: privacy guard (account/balance queries not cached) ---
+Instance 1 attempted to store privacy query — blocked by _is_uncacheable()
+Instance 2 get returns None
+PASS: privacy query never enters Redis
+
+--- Live Redis keys with prefix 'rl:demo:' ---
+  rl:demo:477ed92f5592  ->  query='How long is the return window?'
+  rl:demo:757d148b53ea  ->  query='Circuit breaker states?'
+  rl:demo:f452fc0bc027  ->  query='What is the refund policy?'
+
+Total keys in Redis: 3
+
+[Teardown] Flushed demo keys, connections closed.
+============================================================

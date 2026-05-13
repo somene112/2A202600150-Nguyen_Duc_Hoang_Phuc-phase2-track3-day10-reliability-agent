@@ -19,8 +19,14 @@ class RunMetrics(BaseModel):
     recovery_time_ms: float | None = None
     estimated_cost: float = 0.0
     estimated_cost_saved: float = 0.0
+    false_hit_count: int = 0
+    false_hit_log: list[dict[str, object]] = Field(default_factory=list)
+    cost_cap_skips: int = 0
+    prometheus_metrics: dict[str, int] = Field(default_factory=dict)
+    route_breakdown: dict[str, int] = Field(default_factory=dict)
     latencies_ms: list[float] = Field(default_factory=list)
     scenarios: dict[str, str] = Field(default_factory=dict)
+    transition_logs: list[dict[str, object]] = Field(default_factory=list)
 
     @property
     def availability(self) -> float:
@@ -53,9 +59,14 @@ class RunMetrics(BaseModel):
             "fallback_success_rate": round(self.fallback_success_rate, 4),
             "cache_hit_rate": round(self.cache_hit_rate, 4),
             "circuit_open_count": self.circuit_open_count,
-            "recovery_time_ms": self.recovery_time_ms,
+            "recovery_time_ms": round(self.recovery_time_ms, 2) if self.recovery_time_ms is not None else None,
             "estimated_cost": round(self.estimated_cost, 6),
             "estimated_cost_saved": round(self.estimated_cost_saved, 6),
+            "false_hit_count": self.false_hit_count,
+            "false_hit_log_count": len(self.false_hit_log),
+            "cost_cap_skips": self.cost_cap_skips,
+            "prometheus_metrics": self.prometheus_metrics,
+            "route_breakdown": self.route_breakdown,
             "scenarios": self.scenarios,
         }
 

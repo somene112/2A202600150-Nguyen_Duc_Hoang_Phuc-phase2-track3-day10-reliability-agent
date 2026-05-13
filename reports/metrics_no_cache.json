@@ -1,0 +1,32 @@
+{
+  "total_requests": 1400,
+  "availability": 0.8293,
+  "error_rate": 0.1707,
+  "latency_p50_ms": 280.23,
+  "latency_p95_ms": 502.78,
+  "latency_p99_ms": 535.41,
+  "fallback_success_rate": 0.799,
+  "cache_hit_rate": 0.0,
+  "circuit_open_count": 15,
+  "recovery_time_ms": 2642.28,
+  "estimated_cost": 0.456022,
+  "estimated_cost_saved": 0.0,
+  "false_hit_count": 0,
+  "false_hit_log_count": 0,
+  "cost_cap_skips": 181,
+  "prometheus_metrics": {},
+  "route_breakdown": {
+    "fallback": 950,
+    "static_fallback": 239,
+    "primary": 211
+  },
+  "scenarios": {
+    "primary_timeout_100": "pass",
+    "primary_flaky_50": "pass",
+    "all_healthy": "pass",
+    "recovery_cycle": "pass",
+    "cache_stale_candidate": "pass",
+    "backup_also_flaky": "pass",
+    "cost_cap_scenario": "pass"
+  }
+}

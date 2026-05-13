@@ -1,0 +1,90 @@
+[
+  {
+    "scenario": "primary_timeout_100",
+    "breaker": "primary",
+    "from": "closed",
+    "to": "open",
+    "reason": "failure_threshold",
+    "ts": 1778658627.395547
+  },
+  {
+    "scenario": "primary_flaky_50",
+    "breaker": "primary",
+    "from": "closed",
+    "to": "open",
+    "reason": "failure_threshold",
+    "ts": 1778658629.0886984
+  },
+  {
+    "scenario": "recovery_cycle",
+    "breaker": "primary",
+    "from": "closed",
+    "to": "open",
+    "reason": "failure_threshold",
+    "ts": 1778658631.1338463
+  },
+  {
+    "scenario": "recovery_cycle",
+    "breaker": "primary",
+    "from": "open",
+    "to": "half_open",
+    "reason": "reset_timeout_elapsed",
+    "ts": 1778658633.157293
+  },
+  {
+    "scenario": "recovery_cycle",
+    "breaker": "primary",
+    "from": "half_open",
+    "to": "open",
+    "reason": "probe_failure",
+    "ts": 1778658633.3478787
+  },
+  {
+    "scenario": "recovery_cycle",
+    "breaker": "primary",
+    "from": "open",
+    "to": "half_open",
+    "reason": "reset_timeout_elapsed",
+    "ts": 1778658635.481475
+  },
+  {
+    "scenario": "recovery_cycle",
+    "breaker": "primary",
+    "from": "half_open",
+    "to": "open",
+    "reason": "probe_failure",
+    "ts": 1778658635.705798
+  },
+  {
+    "scenario": "recovery_cycle",
+    "breaker": "primary",
+    "from": "open",
+    "to": "half_open",
+    "reason": "reset_timeout_elapsed",
+    "ts": 1778658639.339922
+  },
+  {
+    "scenario": "recovery_cycle",
+    "breaker": "primary",
+    "from": "half_open",
+    "to": "closed",
+    "reason": "probe_success",
+    "ts": 1778658639.5694616
+  },
+  {
+    "scenario": "backup_also_flaky",
+    "breaker": "primary",
+    "from": "closed",
+    "to": "open",
+    "reason": "failure_threshold",
+    "ts": 1778658641.372606
+  },
+  {
+    "scenario": "backup_also_flaky",
+    "breaker": "backup",
+    "from": "closed",
+    "to": "open",
+    "reason": "failure_threshold",
+    "ts": 1778658641.7032309
+  }
+]
